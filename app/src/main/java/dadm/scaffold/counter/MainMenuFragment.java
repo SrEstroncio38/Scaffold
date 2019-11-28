@@ -11,7 +11,11 @@ import dadm.scaffold.ScaffoldActivity;
 
 
 public class MainMenuFragment extends BaseFragment {
+
+    private int currentShip;
+
     public MainMenuFragment() {
+        currentShip = R.drawable.ship1;
     }
 
     @Override
@@ -27,7 +31,7 @@ public class MainMenuFragment extends BaseFragment {
         view.findViewById(R.id.playBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((ScaffoldActivity)getActivity()).startGame();
+                ((ScaffoldActivity)getActivity()).startGame(currentShip);
             }
         });
         view.findViewById(R.id.selectBtn).setOnClickListener(new View.OnClickListener() {
