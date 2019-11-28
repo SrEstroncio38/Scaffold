@@ -9,6 +9,7 @@ import android.view.View;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
 import dadm.scaffold.counter.ResultFragment;
+import dadm.scaffold.counter.SelectionFragment;
 import dadm.scaffold.sound.SoundManager;
 
 public class ScaffoldActivity extends AppCompatActivity {
@@ -36,15 +37,27 @@ public class ScaffoldActivity extends AppCompatActivity {
         return soundManager;
     }
 
+    public void returnToMenu(int shipDrawable) {
+        MainMenuFragment fragment = new MainMenuFragment();
+        fragment.currentShip = shipDrawable;
+        navigateToFragment(fragment);
+    }
+
     public void startGame(int shipDrawable) {
         // Navigate the the game fragment, which makes the start automatically
-        GameFragment gf = new GameFragment();
-        gf.currentShip = shipDrawable;
-        navigateToFragment(gf);
+        GameFragment fragment = new GameFragment();
+        fragment.currentShip = shipDrawable;
+        navigateToFragment(fragment);
     }
 
     public void endGame() {
         navigateToFragment( new ResultFragment());
+    }
+
+    public void selectShip(int shipDrawable) {
+        SelectionFragment fragment = new SelectionFragment();
+        fragment.currentShip = shipDrawable;
+        navigateToFragment(fragment);
     }
 
     private void navigateToFragment(BaseFragment dst) {

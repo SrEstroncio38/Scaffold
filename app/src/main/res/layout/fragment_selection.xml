@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/background1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/menubg" />
+
+    <ImageView
+        android:id="@+id/returnBtn"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/background1"
+        app:srcCompat="@drawable/buttonbg" />
+
+    <TextView
+        android:id="@+id/returnText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Cancelar"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/returnBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/returnBtn" />
+
+    <ImageView
+        android:id="@+id/shipSelect1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/shipSelect2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/shipSelect5"
+        app:srcCompat="@drawable/ship1" />
+
+    <ImageView
+        android:id="@+id/shipSelect2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toEndOf="@+id/shipSelect1"
+        app:layout_constraintEnd_toStartOf="@+id/shipSelect3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/shipSelect6"
+        app:srcCompat="@drawable/ship2" />
+
+    <ImageView
+        android:id="@+id/shipSelect3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toEndOf="@+id/shipSelect2"
+        app:layout_constraintEnd_toStartOf="@+id/shipSelect4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/shipSelect7"
+        app:srcCompat="@drawable/ship3" />
+
+    <ImageView
+        android:id="@+id/shipSelect4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shipSelect3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/shipSelect8"
+        app:srcCompat="@drawable/ship4" />
+
+    <ImageView
+        android:id="@+id/shipSelect5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toStartOf="@+id/shipSelect6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shipSelect1"
+        app:srcCompat="@drawable/ship5" />
+
+    <ImageView
+        android:id="@+id/shipSelect6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toStartOf="@+id/shipSelect7"
+        app:layout_constraintStart_toEndOf="@+id/shipSelect5"
+        app:layout_constraintTop_toBottomOf="@+id/shipSelect2"
+        app:srcCompat="@drawable/ship6" />
+
+    <ImageView
+        android:id="@+id/shipSelect7"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toStartOf="@+id/shipSelect8"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toEndOf="@+id/shipSelect6"
+        app:layout_constraintTop_toBottomOf="@+id/shipSelect3"
+        app:srcCompat="@drawable/ship7" />
+
+    <ImageView
+        android:id="@+id/shipSelect8"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toEndOf="@+id/shipSelect7"
+        app:layout_constraintTop_toBottomOf="@+id/shipSelect4"
+        app:srcCompat="@drawable/ship8" />
+
+</android.support.constraint.ConstraintLayout>
