@@ -36,9 +36,11 @@ public class ScaffoldActivity extends AppCompatActivity {
         return soundManager;
     }
 
-    public void startGame() {
+    public void startGame(int shipDrawable) {
         // Navigate the the game fragment, which makes the start automatically
-        navigateToFragment( new GameFragment());
+        GameFragment gf = new GameFragment();
+        gf.currentShip = shipDrawable;
+        navigateToFragment(gf);
     }
 
     public void endGame() {
