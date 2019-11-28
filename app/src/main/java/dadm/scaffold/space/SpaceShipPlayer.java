@@ -1,10 +1,17 @@
 package dadm.scaffold.space;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import dadm.scaffold.R;
+import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.engine.GameEngine;
+import dadm.scaffold.engine.Lifes;
+import dadm.scaffold.engine.Score;
 import dadm.scaffold.engine.ScreenGameObject;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
@@ -20,20 +27,28 @@ public class SpaceShipPlayer extends Sprite {
     private int maxX;
     private int maxY;
     private double speedFactor;
+    public int lifes;
+    public int score;
+    public Lifes lifeObj;
+    public Score scoreObj;
 
 
-    public SpaceShipPlayer(GameEngine gameEngine){
+    public SpaceShipPlayer(GameEngine gameEngine, Lifes lifes, Score score){
         super(gameEngine, R.drawable.ship);
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         maxX = gameEngine.width - width;
         maxY = gameEngine.height - height;
+        this.lifes = 3;
+        this.score = 0;
+        this.lifeObj = lifes;
+        this.scoreObj = score;
 
         initBulletPool(gameEngine);
     }
 
     private void initBulletPool(GameEngine gameEngine) {
         for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT; i++) {
-            bullets.add(new Bullet(gameEngine));
+            bullets.add(new Bullet(gameEngine, scoreObj));
         }
     }
 
@@ -98,10 +113,14 @@ public class SpaceShipPlayer extends Sprite {
     @Override
     public void onCollision(GameEngine gameEngine, ScreenGameObject otherObject) {
         if (otherObject instanceof Asteroid) {
-            gameEngine.removeGameObject(this);
-            //gameEngine.stopGame();
             Asteroid a = (Asteroid) otherObject;
             a.removeObject(gameEngine);
+            lifes--;
+            lifeObj.totalLifes = lifes;
+            if (lifes < 0) {
+                gameEngine.removeGameObject(this);
+                //gameEngine.stopGame();
+            }
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);
         }
     }
