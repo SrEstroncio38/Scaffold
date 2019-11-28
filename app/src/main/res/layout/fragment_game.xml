@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,15 +14,89 @@
         android:layout_height="match_parent"
         android:background="@android:color/background_dark" />
 
-    <Button
-        android:layout_gravity="top|right"
+    <include
+        layout="@layout/view_joystick"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-36dp" />
+
+    <ImageView
         android:id="@+id/btn_play_pause"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_width="49dp"
+        android:layout_height="40dp"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/pause_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/scoreTitle"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:layout_marginBottom="5dp"
+        android:elevation="20dp"
+        android:src="@drawable/score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/scoreBg" />
+
+    <ImageView
+        android:id="@+id/scoreBg"
+        android:layout_width="155dp"
+        android:layout_height="27dp"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/scorebg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pause" />
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="4dp"
+        android:text="0"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/scoreBg"
+        app:layout_constraintStart_toEndOf="@+id/scoreTitle" />
 
-    <include layout="@layout/view_joystick"/>
+    <ImageView
+        android:id="@+id/lifeBg"
+        android:layout_width="78dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/textbg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/lifeIcon"
+        android:layout_width="20dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/lifes"
+        app:layout_constraintStart_toStartOf="@+id/lifeBg"
+        app:layout_constraintTop_toTopOf="@+id/lifeBg" />
+
+    <TextView
+        android:id="@+id/lifeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="0"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="@+id/lifeBg"
+        app:layout_constraintStart_toEndOf="@+id/lifeIcon"
+        app:layout_constraintTop_toTopOf="@+id/lifeBg" />
+
+</android.support.constraint.ConstraintLayout>
