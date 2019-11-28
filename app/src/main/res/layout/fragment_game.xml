@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,15 +13,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <Button
-        android:layout_gravity="top|right"
+    <include layout="@layout/view_joystick" />
+
+    <ImageView
         android:id="@+id/btn_play_pause"
+        android:layout_width="49dp"
+        android:layout_height="40dp"
+        android:layout_gravity="top|right"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:src="@drawable/pause_btn" />
+
+    <ImageView
+        android:id="@+id/scoreTitle"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="5dp"
+        android:elevation="20dp"
+        android:src="@drawable/score" />
+
+    <ImageView
+        android:id="@+id/scoreBg"
+        android:layout_width="155dp"
+        android:layout_height="27dp"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/scorebg" />
+
+    <TextView
+        android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pause" />
-
-    <include layout="@layout/view_joystick"/>
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="4dp"
+        android:text="0"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold" />
 
 </FrameLayout>
