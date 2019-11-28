@@ -10,7 +10,7 @@ import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
 
 
-public class MainMenuFragment extends BaseFragment implements View.OnClickListener {
+public class MainMenuFragment extends BaseFragment {
     public MainMenuFragment() {
     }
 
@@ -24,11 +24,23 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.btn_start).setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        ((ScaffoldActivity)getActivity()).startGame();
+        view.findViewById(R.id.playBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((ScaffoldActivity)getActivity()).startGame();
+            }
+        });
+        view.findViewById(R.id.selectBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to select screen
+            }
+        });
+        view.findViewById(R.id.quitBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.exit(0);
+            }
+        });
     }
 }
