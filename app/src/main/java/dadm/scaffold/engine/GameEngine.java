@@ -47,7 +47,7 @@ public class GameEngine {
         this.width = theGameView.getWidth()
                 - theGameView.getPaddingRight() - theGameView.getPaddingLeft();
         this.height = theGameView.getHeight()
-                - theGameView.getPaddingTop() - theGameView.getPaddingTop();
+                - theGameView.getPaddingTop() - theGameView.getPaddingBottom();
 
         quadTree.setArea(new Rect(0, 0, width, height));
 
