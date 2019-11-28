@@ -183,6 +183,12 @@ public class GameEngine {
     public void onGameEvent (GameEvent gameEvent) {
         // We notify all the GameObjects
         // Also the sound manager
+        /*if(gameEvent.equals(gameEvent.AsteroidHit)){
+
+        }
+        if(gameEvent.equals(gameEvent.SpaceshipHit)){
+
+        }*/
         soundManager.playSoundForGameEvent(gameEvent);
     }
 }

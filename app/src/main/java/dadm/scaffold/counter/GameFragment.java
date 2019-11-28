@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
@@ -16,6 +17,8 @@ import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.engine.FramesPerSecondCounter;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameView;
+import dadm.scaffold.engine.Lifes;
+import dadm.scaffold.engine.Score;
 import dadm.scaffold.input.JoystickInputController;
 import dadm.scaffold.mainmenu.ParallaxedBackground;
 import dadm.scaffold.space.GameController;
@@ -27,7 +30,17 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
     private GameEngine theGameEngine;
     public int currentShip;
 
+    /* Dejo esto por que a lo mejor cuando los inicializas en la view
+    se puede inicializar tambien aqui y ya tienes la puntuacion y las vidas
+    en el jodido fragmento de mierda */
+
+    /*
+    public Lifes life;
+    public Score score;
+    */
+
     public GameFragment() {
+
     }
 
     @Override
@@ -47,13 +60,18 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
             public void onGlobalLayout(){
                 //Para evitar que sea llamado múltiples veces,
                 //se elimina el listener en cuanto es llamado
+
                 observer.removeOnGlobalLayoutListener(this);
                 GameView gameView = (GameView) getView().findViewById(R.id.gameView);
                 theGameEngine = new GameEngine(getActivity(), gameView);
+                Lifes life = new Lifes(theGameEngine);
+                Score score = new Score(theGameEngine);
                 theGameEngine.setSoundManager(getScaffoldActivity().getSoundManager());
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
                 theGameEngine.addGameObject(new ParallaxedBackground(theGameEngine, R.drawable.gamebg));
-                theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, currentShip));
+                theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, currentShip , life, score));
+                theGameEngine.addGameObject(life);
+                theGameEngine.addGameObject(score);
                 theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.addGameObject(new GameController(theGameEngine));
                 theGameEngine.startGame();
