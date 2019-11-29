@@ -18,8 +18,6 @@ public class ScaffoldActivity extends AppCompatActivity {
 
     private static final String TAG_FRAGMENT = "content";
 
-    private int score = 0;
-
     private SoundManager soundManager;
 
     @Override

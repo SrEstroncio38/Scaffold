@@ -41,7 +41,7 @@ public class Bullet extends Sprite {
         parent = parentPlayer;
     }
 
-    private void removeObject(GameEngine gameEngine) {
+    public void removeObject(GameEngine gameEngine) {
         gameEngine.removeGameObject(this);
         // And return it to the pool
         parent.releaseBullet(this);
@@ -58,6 +58,12 @@ public class Bullet extends Sprite {
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.AsteroidHit);
             // Add some score
+        } else if (otherObject instanceof Boss) {
+            scoreObj.totalPoints += 10;
+            removeObject(gameEngine);
+            gameEngine.onGameEvent(GameEvent.AsteroidHit);
+            Boss b = (Boss) otherObject;
+            b.life -= 1;
         }
     }
 }

@@ -16,6 +16,8 @@ public class GameController extends GameObject {
     private int enemiesSpawned;
     private SpaceShipPlayer spaceShip;
     private GameEngine gameEngine;
+    private Boss boss;
+    private boolean bossSpawned = false;
 
     public GameController(GameEngine gameEngine, SpaceShipPlayer spaceShip) {
         this.gameEngine = gameEngine;
@@ -24,6 +26,7 @@ public class GameController extends GameObject {
         for (int i=0; i<10; i++) {
             asteroidPool.add(new Asteroid(this, gameEngine));
         }
+        boss = new Boss(gameEngine, spaceShip);
     }
 
     @Override
@@ -34,20 +37,24 @@ public class GameController extends GameObject {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
-        currentMillis += elapsedMillis;
+        if (!bossSpawned) {
+            currentMillis += elapsedMillis;
 
-        long waveTimestamp = enemiesSpawned*TIME_BETWEEN_ENEMIES;
-        if (currentMillis > waveTimestamp) {
-            // Spawn a new enemy
-            Asteroid a = asteroidPool.remove(0);
-            a.init(gameEngine);
-            gameEngine.addGameObject(a);
-            enemiesSpawned++;
-            return;
-        }
+            long waveTimestamp = enemiesSpawned * TIME_BETWEEN_ENEMIES;
+            if (currentMillis > waveTimestamp) {
+                // Spawn a new enemy
+                Asteroid a = asteroidPool.remove(0);
+                a.init(gameEngine);
+                gameEngine.addGameObject(a);
+                enemiesSpawned++;
+                return;
+            }
 
-        if (enemiesSpawned > 50) {
-            spaceShip.endLevel(gameEngine);
+            if (enemiesSpawned > 10) {
+                boss.init(gameEngine);
+                gameEngine.addGameObject(boss);
+                bossSpawned = true;
+            }
         }
     }
 
