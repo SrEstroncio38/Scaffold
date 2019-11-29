@@ -14,8 +14,12 @@ public class GameController extends GameObject {
     private long currentMillis;
     private List<Asteroid> asteroidPool = new ArrayList<Asteroid>();
     private int enemiesSpawned;
+    private SpaceShipPlayer spaceShip;
+    private GameEngine gameEngine;
 
-    public GameController(GameEngine gameEngine) {
+    public GameController(GameEngine gameEngine, SpaceShipPlayer spaceShip) {
+        this.gameEngine = gameEngine;
+        this.spaceShip = spaceShip;
         // We initialize the pool of items now
         for (int i=0; i<10; i++) {
             asteroidPool.add(new Asteroid(this, gameEngine));
@@ -40,6 +44,10 @@ public class GameController extends GameObject {
             gameEngine.addGameObject(a);
             enemiesSpawned++;
             return;
+        }
+
+        if (enemiesSpawned > 50) {
+            spaceShip.endLevel(gameEngine);
         }
     }
 
