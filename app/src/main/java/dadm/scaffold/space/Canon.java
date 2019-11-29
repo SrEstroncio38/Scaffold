@@ -69,6 +69,12 @@ public class Canon extends Sprite {
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.AsteroidHit);
             // Add some score
+        } else if (otherObject instanceof Boss) {
+            scoreObj.totalPoints += 20;
+            removeObject(gameEngine);
+            gameEngine.onGameEvent(GameEvent.AsteroidHit);
+            Boss b = (Boss) otherObject;
+            b.life -= 2;
         }
     }
 }

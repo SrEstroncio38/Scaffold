@@ -12,7 +12,7 @@ public class Boss extends Sprite {
     private boolean movingLeft;
     private SpaceShipPlayer spaceShip;
 
-    public int life = 50;
+    public int life = 20;
 
     public Boss(GameEngine gameEngine, SpaceShipPlayer spaceShip) {
         super(gameEngine, R.drawable.boss);
@@ -58,6 +58,7 @@ public class Boss extends Sprite {
         }
 
         if (life <= 0) {
+            spaceShip.scoreObj.enemies++;
             spaceShip.endLevel(gameEngine);
         }
     }

@@ -156,9 +156,6 @@ public class SpaceShipPlayer extends Sprite {
         else {
             timeSinceLastFireAA += elapsedMillis;
         }
-
-        System.out.println("Last fire: "+timeSinceLastFire);
-        System.out.println("Last fire: "+timeSinceLastFireAA);
     }
 
     @Override
