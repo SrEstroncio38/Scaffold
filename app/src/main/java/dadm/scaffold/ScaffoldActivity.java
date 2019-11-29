@@ -52,11 +52,12 @@ public class ScaffoldActivity extends AppCompatActivity {
         navigateToFragment(fragment);
     }
 
-    public void endGame(Lifes life, Score score) {
+    public void endGame(Lifes life, Score score, int currentShip) {
         ResultFragment fragment = new ResultFragment();
         fragment.lifes = life.totalLifes;
         fragment.score = score.totalPoints;
         fragment.enemies = score.enemies;
+        fragment.currentShip = currentShip;
         navigateToFragment(fragment);
     }
 

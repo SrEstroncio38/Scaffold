@@ -16,6 +16,7 @@ public class ResultFragment extends BaseFragment {
     public int lifes;
     public int score;
     public int enemies;
+    public int currentShip;
 
     public ResultFragment() {
         lifes = 0;
@@ -36,18 +37,19 @@ public class ResultFragment extends BaseFragment {
 
         ((TextView) view.findViewById(R.id.scoreValue)).setText(Integer.toString(score));
         ((TextView) view.findViewById(R.id.lifesValue)).setText(Integer.toString(lifes));
+        ((TextView) view.findViewById(R.id.enemiesValue)).setText(Integer.toString(enemies));
 
         view.findViewById(R.id.replayBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((ScaffoldActivity)getActivity()).startGame(R.drawable.ship1);
+                ((ScaffoldActivity)getActivity()).startGame(currentShip);
             }
         });
 
         view.findViewById(R.id.menuBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((ScaffoldActivity)getActivity()).returnToMenu(R.drawable.ship1);
+                ((ScaffoldActivity)getActivity()).returnToMenu(currentShip);
             }
         });
     }
