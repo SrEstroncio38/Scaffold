@@ -26,6 +26,7 @@ public class SpaceShipPlayer extends Sprite {
     private static final long TIME_BETWEEN_BULLETS = 250;
     List<Bullet> bullets = new ArrayList<Bullet>();
     private long timeSinceLastFire;
+    private int currentShip;
 
     private int maxX;
     private int maxY;
@@ -40,6 +41,7 @@ public class SpaceShipPlayer extends Sprite {
 
     public SpaceShipPlayer(GameEngine gameEngine, int shipDrawable, Lifes lifes, Score score, ScaffoldActivity activity){
         super(gameEngine, shipDrawable);
+        currentShip = shipDrawable;
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         maxX = gameEngine.width - width;
         maxY = gameEngine.height - height;
@@ -123,9 +125,9 @@ public class SpaceShipPlayer extends Sprite {
             a.removeObject(gameEngine);
             lifes--;
             lifeObj.totalLifes = lifes;
-            if (lifes < 0) {
+            if (lifes <= 0) {
                 gameEngine.removeGameObject(this);
-                scaffold.endGame();
+                scaffold.endGame(lifeObj, scoreObj);
                 //gameEngine.stopGame();
             }
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);
