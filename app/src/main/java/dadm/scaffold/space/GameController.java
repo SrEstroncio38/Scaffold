@@ -19,6 +19,8 @@ public class GameController extends GameObject {
     private Boss boss;
     private boolean bossSpawned = false;
 
+    private final int NUMBER_OF_ASTEROIDS = 25;
+
     public GameController(GameEngine gameEngine, SpaceShipPlayer spaceShip) {
         this.gameEngine = gameEngine;
         this.spaceShip = spaceShip;
@@ -50,7 +52,7 @@ public class GameController extends GameObject {
                 return;
             }
 
-            if (enemiesSpawned > 10) {
+            if (enemiesSpawned > NUMBER_OF_ASTEROIDS) {
                 boss.init(gameEngine);
                 gameEngine.addGameObject(boss);
                 bossSpawned = true;
