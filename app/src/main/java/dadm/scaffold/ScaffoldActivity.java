@@ -10,6 +10,8 @@ import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
 import dadm.scaffold.counter.ResultFragment;
 import dadm.scaffold.counter.SelectionFragment;
+import dadm.scaffold.engine.Lifes;
+import dadm.scaffold.engine.Score;
 import dadm.scaffold.sound.SoundManager;
 
 public class ScaffoldActivity extends AppCompatActivity {
@@ -50,8 +52,11 @@ public class ScaffoldActivity extends AppCompatActivity {
         navigateToFragment(fragment);
     }
 
-    public void endGame() {
-        navigateToFragment( new ResultFragment());
+    public void endGame(Lifes life, Score score) {
+        ResultFragment fragment = new ResultFragment();
+        fragment.lifes = life.totalLifes;
+        fragment.score = score.totalPoints;
+        navigateToFragment(fragment);
     }
 
     public void selectShip(int shipDrawable) {

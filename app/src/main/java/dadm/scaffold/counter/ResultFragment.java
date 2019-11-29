@@ -7,10 +7,18 @@ import android.view.ViewGroup;
 
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
+import dadm.scaffold.engine.Lifes;
+import dadm.scaffold.engine.Score;
 
 
 public class ResultFragment extends BaseFragment {
+
+    public int lifes;
+    public int score;
+
     public ResultFragment() {
+        lifes = 0;
+        score = 0;
     }
 
     @Override
