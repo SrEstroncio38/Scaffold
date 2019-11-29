@@ -125,7 +125,7 @@ public class SpaceShipPlayer extends Sprite {
             lifeObj.totalLifes = lifes;
             if (lifes < 0) {
                 gameEngine.removeGameObject(this);
-                scaffold.endGame();
+                scaffold.endGame(lifeObj, scoreObj);
                 //gameEngine.stopGame();
             }
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);

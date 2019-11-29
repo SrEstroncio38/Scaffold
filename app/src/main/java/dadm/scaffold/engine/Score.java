@@ -11,6 +11,7 @@ public class Score extends GameObject {
 
     private Paint paint;
     public int totalPoints;
+    public int enemies;
     private int draws;
 
     public Score(GameEngine gameEngine) {
