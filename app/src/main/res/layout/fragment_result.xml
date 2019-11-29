@@ -91,4 +91,54 @@
         app:layout_constraintStart_toEndOf="@+id/replayBtn"
         app:layout_constraintTop_toBottomOf="@+id/scoreText" />
 
+    <TextView
+        android:id="@+id/enemiesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Enemigos\ndestruidos:"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        app:layout_constraintStart_toEndOf="@+id/menuBtn"
+        app:layout_constraintEnd_toStartOf="@+id/lifesText"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintBottom_toTopOf="@+id/enemiesValue" />
+
+    <TextView
+        android:id="@+id/enemiesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/background1"
+        app:layout_constraintEnd_toEndOf="@+id/enemiesText"
+        app:layout_constraintStart_toStartOf="@+id/enemiesText"
+        app:layout_constraintTop_toBottomOf="@+id/enemiesText" />
+
+    <TextView
+        android:id="@+id/lifesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Vidas\nrestantes:"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="@+id/background1"
+        app:layout_constraintStart_toEndOf="@+id/enemiesText"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintBottom_toTopOf="@+id/lifesValue"/>
+
+    <TextView
+        android:id="@+id/lifesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/background1"
+        app:layout_constraintEnd_toEndOf="@+id/lifesText"
+        app:layout_constraintStart_toStartOf="@+id/lifesText"
+        app:layout_constraintTop_toBottomOf="@+id/lifesText" />
+
 </android.support.constraint.ConstraintLayout>
