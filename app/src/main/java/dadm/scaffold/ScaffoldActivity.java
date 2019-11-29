@@ -56,6 +56,7 @@ public class ScaffoldActivity extends AppCompatActivity {
         ResultFragment fragment = new ResultFragment();
         fragment.lifes = life.totalLifes;
         fragment.score = score.totalPoints;
+        fragment.enemies = score.enemies;
         navigateToFragment(fragment);
     }
 

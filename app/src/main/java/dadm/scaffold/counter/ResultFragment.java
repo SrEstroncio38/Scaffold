@@ -15,10 +15,12 @@ public class ResultFragment extends BaseFragment {
 
     public int lifes;
     public int score;
+    public int enemies;
 
     public ResultFragment() {
         lifes = 0;
         score = 0;
+        enemies = 0;
     }
 
     @Override
