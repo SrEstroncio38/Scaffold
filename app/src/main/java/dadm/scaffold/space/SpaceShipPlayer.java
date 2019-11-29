@@ -26,6 +26,7 @@ public class SpaceShipPlayer extends Sprite {
     private static final long TIME_BETWEEN_BULLETS = 250;
     List<Bullet> bullets = new ArrayList<Bullet>();
     private long timeSinceLastFire;
+    private long timeSinceLastFireAA;
     private int currentShip;
 
     private int maxX;
@@ -113,7 +114,20 @@ public class SpaceShipPlayer extends Sprite {
             timeSinceLastFire = 0;
             gameEngine.onGameEvent(GameEvent.LaserFired);
         }
+
+        if (timeSinceLastFireAA > (TIME_BETWEEN_BULLETS + 100)) {
+            Bullet bullet = getBullet();
+            if (bullet == null) {
+                return;
+            }
+            bullet.init(this, positionX + width/2, positionY);
+            gameEngine.addGameObject(bullet);
+            timeSinceLastFireAA = 0;
+            gameEngine.onGameEvent(GameEvent.LaserFired);
+        }
+
         else {
+            timeSinceLastFireAA += elapsedMillis;
             timeSinceLastFire += elapsedMillis;
         }
     }
