@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dadm.scaffold.R;
+import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.Lifes;
@@ -33,10 +34,11 @@ public class SpaceShipPlayer extends Sprite {
     public int score;
     public Lifes lifeObj;
     public Score scoreObj;
+    public ScaffoldActivity scaffold;
 
 
 
-    public SpaceShipPlayer(GameEngine gameEngine, int shipDrawable, Lifes lifes, Score score){
+    public SpaceShipPlayer(GameEngine gameEngine, int shipDrawable, Lifes lifes, Score score, ScaffoldActivity activity){
         super(gameEngine, shipDrawable);
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         maxX = gameEngine.width - width;
@@ -45,6 +47,7 @@ public class SpaceShipPlayer extends Sprite {
         this.score = 0;
         this.lifeObj = lifes;
         this.scoreObj = score;
+        this.scaffold = activity;
 
         initBulletPool(gameEngine);
     }
@@ -122,6 +125,7 @@ public class SpaceShipPlayer extends Sprite {
             lifeObj.totalLifes = lifes;
             if (lifes < 0) {
                 gameEngine.removeGameObject(this);
+                scaffold.endGame();
                 //gameEngine.stopGame();
             }
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);
