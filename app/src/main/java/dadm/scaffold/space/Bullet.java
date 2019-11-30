@@ -16,7 +16,7 @@ public class Bullet extends Sprite {
     public Score scoreObj;
 
     public Bullet(GameEngine gameEngine, Score score){
-        super(gameEngine, R.drawable.bullet);
+        super(gameEngine, R.drawable.canon);
         this.scoreObj = score;
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
     }
