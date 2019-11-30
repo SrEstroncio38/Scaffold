@@ -14,7 +14,7 @@ import java.util.HashMap;
 public final class SoundManager {
 
 	private static final int MAX_STREAMS = 10;
-	private static final float DEFAULT_MUSIC_VOLUME = 1f;
+	private static final float DEFAULT_MUSIC_VOLUME = 0.6f;
 
 	private HashMap<GameEvent, Integer> soundsMap;
 	
@@ -51,6 +51,7 @@ public final class SoundManager {
 		soundsMap = new HashMap<GameEvent, Integer>();
 		loadEventSound(context, GameEvent.AsteroidHit, "Asteroid_explosion_1.wav");
 		loadEventSound(context, GameEvent.SpaceshipHit, "Oof.mp3");
+		loadEventSound(context, GameEvent.BossHit, "OofBoss.mp3");
 		loadEventSound(context, GameEvent.LaserFired, "NormalShot.mp3");
 		loadEventSound(context, GameEvent.CanonFired, "Pum.mp3");
 	}

@@ -61,7 +61,7 @@ public class Bullet extends Sprite {
         } else if (otherObject instanceof Boss) {
             scoreObj.totalPoints += 10;
             removeObject(gameEngine);
-            gameEngine.onGameEvent(GameEvent.AsteroidHit);
+            gameEngine.onGameEvent(GameEvent.BossHit);
             Boss b = (Boss) otherObject;
             b.life -= 1;
         }
