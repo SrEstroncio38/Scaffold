@@ -18,7 +18,7 @@ public class Canon extends Sprite {
     private boolean dir;
 
     public Canon(GameEngine gameEngine, Score score){
-        super(gameEngine, R.drawable.bullet);
+        super(gameEngine, R.drawable.canon2);
         this.scoreObj = score;
         speedFactor = gameEngine.pixelFactor * -300d / 2000d;
         dir = false;

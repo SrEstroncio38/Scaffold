@@ -135,7 +135,7 @@ public class SpaceShipPlayer extends Sprite {
             gameEngine.addGameObject(canonI);
             gameEngine.addGameObject(canonD);
             timeSinceLastFire = 0;
-            gameEngine.onGameEvent(GameEvent.LaserFired);
+            gameEngine.onGameEvent(GameEvent.CanonFired);
         }
 
         else {
