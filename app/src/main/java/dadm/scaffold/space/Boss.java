@@ -17,8 +17,8 @@ public class Boss extends Sprite {
 
     public int life = 20;
 
-    private static final int INITIAL_BULLET_POOL_AMOUNT = 25;
-    private static final long TIME_BETWEEN_BULLETS = 350;
+    private static final int INITIAL_BULLET_POOL_AMOUNT = 15;
+    private static final long TIME_BETWEEN_BULLETS = 400;
     List<EnemyBullet> bullets = new ArrayList<EnemyBullet>();
     private float timeSinceLastFire;
 

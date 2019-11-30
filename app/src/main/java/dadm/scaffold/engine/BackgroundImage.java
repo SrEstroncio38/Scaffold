@@ -22,6 +22,8 @@ public abstract class BackgroundImage extends GameObject {
     protected double rotation;
 
     protected double pixelFactor;
+    protected int screenHeight;
+    protected int screenWidth;
 
     protected final Bitmap bitmap;
 
@@ -40,22 +42,27 @@ public abstract class BackgroundImage extends GameObject {
 
         this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
 
+        positionX = (gameEngine.width/2) - (width/2);
+
+        screenHeight = gameEngine.height;
+        screenWidth = gameEngine.width;
+
         LowestPosition();
     }
 
     protected void LowestPosition() {
-        while (positionX > width / pixelFactor) {
-            positionX -= width / pixelFactor;
+        while (positionX > screenWidth) {
+            positionX -= width;
         }
-        while (positionX < 0) {
-            positionX += width / pixelFactor;
+        while (positionX < screenWidth - width) {
+            positionX += width;
         }
 
-        while (positionY > height / pixelFactor) {
-            positionY -= height / pixelFactor;
+        while (positionY > screenHeight) {
+            positionY -= height;
         }
-        while (positionY < 0) {
-            positionY += height / pixelFactor;
+        while (positionY < screenHeight - height) {
+            positionY += height;
         }
     }
 
@@ -69,8 +76,8 @@ public abstract class BackgroundImage extends GameObject {
     protected void DrawRecursively(Canvas canvas, double posX, double posY) {
         if (posX > canvas.getWidth()
                 || posY > canvas.getHeight()
-                || posX < - width / pixelFactor
-                || posY < - height / pixelFactor) {
+                || posX < - width
+                || posY < - height) {
             return;
         }
         filledPos.add(new PointF((float)posX, (float)posY));
@@ -80,10 +87,10 @@ public abstract class BackgroundImage extends GameObject {
         matrix.postRotate((float) rotation, (float) (posX + width/2), (float) (posY + height/2));
         canvas.drawBitmap(bitmap, matrix, null);
         PointF[] points = {
-                new PointF((float)(posX - width / pixelFactor), (float)posY),
-                new PointF((float)(posX + width / pixelFactor), (float)posY),
-                new PointF((float)posX, (float)(posY - height / pixelFactor)),
-                new PointF((float)posX, (float)(posY + height / pixelFactor))
+                new PointF((float)(posX - width), (float)posY),
+                new PointF((float)(posX + width), (float)posY),
+                new PointF((float)posX, (float)(posY - height)),
+                new PointF((float)posX, (float)(posY + height))
         };
         for (PointF p : points) {
             if (!filledPos.contains(p)) {

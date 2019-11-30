@@ -23,7 +23,7 @@ import dadm.scaffold.sound.GameEvent;
 public class SpaceShipPlayer extends Sprite {
 
     private static final int INITIAL_BULLET_POOL_AMOUNT = 25;
-    private static final long TIME_BETWEEN_BULLETS = 350;
+    private static final long TIME_BETWEEN_BULLETS = 400;
     private static final int CANON_OFFSET = 80;
     List<Bullet> bullets = new ArrayList<Bullet>();
     List<Canon> canons = new ArrayList<Canon>();
@@ -45,7 +45,7 @@ public class SpaceShipPlayer extends Sprite {
     public SpaceShipPlayer(GameEngine gameEngine, int shipDrawable, Lifes lifes, Score score, ScaffoldActivity activity){
         super(gameEngine, shipDrawable);
         currentShip = shipDrawable;
-        speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
+        speedFactor = pixelFactor * 150d / 1000d; // We want to move at 100px per second on a 400px tall screen
         maxX = gameEngine.width - width;
         maxY = gameEngine.height - height;
         this.lifes = 3;
