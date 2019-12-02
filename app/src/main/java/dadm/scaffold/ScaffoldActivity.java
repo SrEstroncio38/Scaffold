@@ -81,11 +81,6 @@ public class ScaffoldActivity extends AppCompatActivity {
         }
     }
 
-    public void navigateBack() {
-        // Do a push on the navigation history
-        super.onBackPressed();
-    }
-
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

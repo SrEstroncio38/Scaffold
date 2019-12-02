@@ -3,6 +3,7 @@ package dadm.scaffold.counter;
 import android.content.DialogInterface;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,11 @@ import dadm.scaffold.space.GameController;
 import dadm.scaffold.space.SpaceShipPlayer;
 
 
-public class GameFragment extends BaseFragment implements View.OnClickListener {
+public class GameFragment extends BaseFragment {
 
     private GameEngine theGameEngine;
     public int currentShip;
+    private View pauseMenu;
 
     /* Dejo esto por que a lo mejor cuando los inicializas en la view
     se puede inicializar tambien aqui y ya tienes la puntuacion y las vidas
@@ -53,7 +55,8 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.btn_play_pause).setOnClickListener(this);
+        pauseMenu = (View) view.findViewById(R.id.pauseMenu);
+        pauseMenu.setVisibility(View.INVISIBLE);
         final ViewTreeObserver observer = view.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
             @Override
@@ -87,11 +90,23 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
             }
         });
 
+        ImageView continueBtn = (ImageView) getView().findViewById(R.id.continueBtn);
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                theGameEngine.resumeGame();
+                pauseMenu.setVisibility(View.INVISIBLE);
+            }
+        });
 
-    }
-
-    @Override
-    public void onClick(View v) {
+        ImageView exitBtn = (ImageView) getView().findViewById(R.id.exitBtn);
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                theGameEngine.stopGame();
+                ((ScaffoldActivity)getActivity()).returnToMenu(currentShip);
+            }
+        });
 
     }
 
@@ -121,33 +136,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
 
     private void pauseGameAndShowPauseDialog() {
         theGameEngine.pauseGame();
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.pause_dialog_title)
-                .setMessage(R.string.pause_dialog_message)
-                .setPositiveButton(R.string.resume, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        theGameEngine.resumeGame();
-                    }
-                })
-                .setNegativeButton(R.string.stop, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        theGameEngine.stopGame();
-                        ((ScaffoldActivity)getActivity()).navigateBack();
-                    }
-                })
-                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        theGameEngine.resumeGame();
-                    }
-                })
-                .create()
-                .show();
-
+        pauseMenu.setVisibility(View.VISIBLE);
     }
 
     private void playOrPause() {
